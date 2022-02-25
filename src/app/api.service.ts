@@ -28,7 +28,7 @@ export class ApiService {
   };
 
   getLocation(): Observable<any> {
-    return this.http.post(this.api, {"ios":"100", "lan":"EN","ver":"100"}, this.httpOptions)
+    return this.http.post<Location[]>(this.api, {"ios":"100", "lan":"EN","ver":"100"}, this.httpOptions)
     .pipe(
       catchError(this.handleError<Location[]>('getLocation', []))
     );

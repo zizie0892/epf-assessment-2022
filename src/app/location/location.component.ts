@@ -14,9 +14,9 @@ import {ApiService} from '../api.service';
 })
 export class LocationComponent implements AfterViewInit {
 
-  locator: Location[] = [];
-  displayedColumns : string[]= ['position', 'ste', 'nam', 'ads', 'lat'];
-  dataSource = new MatTableDataSource(this.locator)
+  location: Location[] = [];
+  displayedColumns = ['position', 'ste', 'nam', 'ads', 'lat'];
+  dataSource = new MatTableDataSource(this.location)
   
   constructor(
     private api: ApiService,
@@ -33,15 +33,16 @@ export class LocationComponent implements AfterViewInit {
     this.api.getLocation()
     .subscribe((locator) => {
       console.log(locator.lis)
-      this.dataSource = locator.lis;
+      this.location= locator.lis;
     })
-  }
-  ngAfterViewInit(){
-    this.dataSource.sort = this.sort;
   }
 
   @ViewChild(MatSort)
   sort!: MatSort;
+
+  ngAfterViewInit(){
+    this.dataSource.sort = this.sort;
+  }
   
   applyFilter(event:Event){
     const filterValue = (event.target as HTMLInputElement).value;

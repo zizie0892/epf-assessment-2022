@@ -3,7 +3,7 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Selangor" #input>
 </mat-form-field>
 <div class="table-container">
-    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+    <table mat-table [dataSource]="location" matSort (matSortChange)="announceSortChange($event)"
     class="mat-elevation-z8">
 
   <!-- Position Column -->
